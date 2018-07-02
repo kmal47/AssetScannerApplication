@@ -1,29 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/bgdark"
+    tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_above="@id/imageView"
-        android:layout_centerHorizontal="true"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="63dp"
         android:text="@string/far_list"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="100dp" />
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
-    <ImageView
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/imageView"
+    <Button
+        android:id="@+id/scanfar_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/thumbnail"
-        tools:layout_editor_absoluteX="108dp"
-        tools:layout_editor_absoluteY="196dp"
-        android:contentDescription="TODO" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="174dp"
+        android:text="@string/scan_asset_number" />
+
+    <TextView
+        android:id="@+id/assetnumber_txt"
+        android:layout_width="256dp"
+        android:layout_height="72dp"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:background="@drawable/border"
+        android:textColor="#FFFFFF" />
+
+
+
 </RelativeLayout>

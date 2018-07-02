@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -32,6 +33,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class SpareActivity extends AppCompatActivity {
     String scannedData;
+    TextView contentTxt;
 
 
     Button scanBtn;
@@ -42,12 +44,21 @@ public class SpareActivity extends AppCompatActivity {
 
         final Activity activity =this;
         scanBtn = (Button)findViewById(R.id.scan_btn);
+        contentTxt = (TextView)findViewById(R.id.serialnumber_txt);
+
+
+
+    }
+
+    protected void onStart() {
+        super.onStart();
+        final Activity activity =this;
 
         scanBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 IntentIntegrator integrator = new IntentIntegrator(activity);
-                integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+                integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
                 integrator.setPrompt("Scan");
                 integrator.setBeepEnabled(false);
                 integrator.setCameraId(0);
@@ -55,6 +66,7 @@ public class SpareActivity extends AppCompatActivity {
                 integrator.initiateScan();
             }
         });
+
     }
 
     @Override
@@ -64,6 +76,7 @@ public class SpareActivity extends AppCompatActivity {
             scannedData = result.getContents();
             if (scannedData != null) {
                 // Here we need to handle scanned data...
+                contentTxt.setText("Serial Number: " + result.getContents());
                 new SendRequest().execute();
 
 
